@@ -35,10 +35,13 @@ public class Usuario extends Conta {
 	
 	public void comprarCarrinho() {
 		ArrayList<Jogo> resultado = this.getJogosPossuidos();
-		resultado.addAll( this.carrinho);
+		resultado.addAll( this.getCarrinho());
 		this.setJogosPossuidos(resultado);
-		resultado.clear();
-		this.setCarrinho( resultado);
+		Pedido pedidoNovo = new Pedido( this.getUser(), resultado);
+		//método para armazenar os pedidos
+		ArrayList<Jogo> carrinhoClear = this.getCarrinho();
+		carrinhoClear.clear();
+		this.setCarrinho( carrinhoClear);
 	}
 	
 	public void addCarrinho( Jogo game) {

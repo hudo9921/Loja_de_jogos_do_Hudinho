@@ -1,6 +1,7 @@
 package package01;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Pedido {
 	
@@ -9,12 +10,18 @@ public class Pedido {
 	private Jogo carrinho[];
 	private LocalDate dataVenda;
 	
-	public Pedido( String comprador, float valorTotal, Jogo carrinho[]) {
+	public Pedido( String comprador, ArrayList<Jogo> carrinho) {
 		this.setComprador(comprador);
-		this.setCarrinho(carrinho);
 		LocalDate dataAtual = LocalDate.now();
 		this.setDataVenda(dataAtual);
-		//falta valorTotal
+		
+		Jogo[] carrinhoNew = carrinho.toArray(new Jogo[0]);		
+		this.setCarrinho( carrinhoNew);
+		float num = 0;
+		for( Jogo c : this.getCarrinho()) {
+			num += c.getPreco();
+		}
+		this.setValorTotal( num);
 	}
 
 	public String getComprador() {

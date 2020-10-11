@@ -53,4 +53,10 @@ public class Jogo {
 		this.qntVendido = qntVendido;
 	}
 	
+	public String toString() {
+		String resultado = "";
+		resultado = "Jogo( Nome: " + this.getNome() + ", Preço: " + this.getPreco() + ")";
+		return resultado;
+	}
+	
 }
