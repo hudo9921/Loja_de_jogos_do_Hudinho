@@ -1,4 +1,4 @@
-package package01;
+package negocio.beans;
 
 public class Jogo {
 	

@@ -1,4 +1,4 @@
-package package01;
+package negocio.beans;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
