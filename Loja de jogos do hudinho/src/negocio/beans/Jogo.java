@@ -4,13 +4,15 @@ public class Jogo {
 	
 	private String nome;
 	//revisar id
-	private double id;
+	private int id;
 	private float preco;
 	private int qntVendido;
+	private int contador;
 	
-	public Jogo( String nome, float preco) {
+	public Jogo( String nome, float preco,int contador) {
 		this.setNome(nome);
 		this.setPreco(preco);
+		this.id=6000+contador;
 	}
 
 	public String getNome() {
@@ -25,11 +27,11 @@ public class Jogo {
 		}
 	}
 
-	public double getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(double id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -55,7 +57,7 @@ public class Jogo {
 	
 	public String toString() {
 		String resultado = "";
-		resultado = "Jogo( Nome: " + this.getNome() + ", Preço: " + this.getPreco() + ")";
+		resultado = "Jogo( Nome: " + this.getNome() + ", Preço: " + this.getPreco() + ")" + "id:"+ this.getId();
 		return resultado;
 	}
 	

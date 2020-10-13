@@ -5,16 +5,15 @@ import java.util.ArrayList;
 
 public class Pedido {
 	
-	private String comprador;
+	private Usuario comprador;
 	private float valorTotal;
 	private Jogo carrinho[];
 	private LocalDate dataVenda;
 	
-	public Pedido( String comprador, ArrayList<Jogo> carrinho) {
+	public Pedido( Usuario comprador, ArrayList<Jogo> carrinho) {
 		this.setComprador(comprador);
 		LocalDate dataAtual = LocalDate.now();
 		this.setDataVenda(dataAtual);
-		
 		Jogo[] carrinhoNew = carrinho.toArray(new Jogo[0]);		
 		this.setCarrinho( carrinhoNew);
 		float num = 0;
@@ -24,11 +23,11 @@ public class Pedido {
 		this.setValorTotal( num);
 	}
 
-	public String getComprador() {
+	public Usuario getComprador() {
 		return comprador;
 	}
 
-	public void setComprador(String comprador) {
+	public void setComprador(Usuario comprador) {
 		this.comprador = comprador;
 	}
 
@@ -55,5 +54,6 @@ public class Pedido {
 	public void setDataVenda(LocalDate dataVenda) {
 		this.dataVenda = dataVenda;
 	}
+	
 
 }

@@ -1,16 +1,19 @@
 package negocio.beans;
 
 import java.util.ArrayList;
+import dados.IUserPedido;
 
 public class Usuario extends Conta {
 	
 	private ArrayList<Jogo> jogosPossuidos;
 	private ArrayList<Jogo> carrinho;
+	private IUserPedido repositorioPedido;
 	
-	public Usuario( String user, double id, String senha) {
+	public Usuario( String user, double id, String senha,IUserPedido repPedido) {
 		super(user, id, senha);
 		this.jogosPossuidos = new ArrayList<>();
 		this.carrinho = new ArrayList<>();
+		this.repositorioPedido=repPedido;
 	}
 
 	public ArrayList<Jogo> getJogosPossuidos() {
@@ -18,7 +21,12 @@ public class Usuario extends Conta {
 	}
 
 	public void setJogosPossuidos(ArrayList<Jogo> jogosPossuidos) {
-		this.jogosPossuidos = jogosPossuidos;
+		for (int i = 0; i < jogosPossuidos.size(); i++) 
+		{
+			//modificado para adicionar cada parte do parametro e nao apenas igualar
+			if(jogosPossuidos.get(i)!=null)
+			{this.jogosPossuidos.add(jogosPossuidos.get(i));}
+		}
 	}
 
 	public ArrayList<Jogo> getCarrinho() {
@@ -26,7 +34,18 @@ public class Usuario extends Conta {
 	}
 
 	public void setCarrinho(ArrayList<Jogo> carrinho) {
-		this.carrinho = carrinho;
+		if(carrinho.size()>0)
+		{	
+			for (int i = 0; i < carrinho.size(); i++) {
+				if(carrinho.get(i)!=null)
+				{
+					this.carrinho.add(carrinho.get(i));
+				}
+				
+			}
+		}
+		this.carrinho=carrinho;
+		
 	}
 	
 	public void alterarSenha( String novaSenha) {
@@ -34,10 +53,9 @@ public class Usuario extends Conta {
 	}
 	
 	public void comprarCarrinho() {
-		ArrayList<Jogo> resultado = this.getJogosPossuidos();
-		resultado.addAll( this.getCarrinho());
-		this.setJogosPossuidos(resultado);
-		Pedido pedidoNovo = new Pedido( this.getUser(), resultado);
+		this.setJogosPossuidos(this.getCarrinho());
+		Pedido pedidoNovo;
+		this.repositorioPedido.addPedido(new Usuario(this.getUser(),this.getId(),this.getSenha(),null), carrinho);
 		//método para armazenar os pedidos
 		ArrayList<Jogo> carrinhoClear = this.getCarrinho();
 		carrinhoClear.clear();
@@ -45,7 +63,7 @@ public class Usuario extends Conta {
 	}
 	
 	public void addCarrinho( Jogo game) {
-		ArrayList<Jogo> resultado = this.getCarrinho();
+		ArrayList<Jogo> resultado = new ArrayList<>();
 		resultado.add( game);
 		this.setCarrinho(resultado);
 	}
@@ -57,23 +75,23 @@ public class Usuario extends Conta {
 	}
 	
 	public void  removeGameCarrinho( Jogo game) {
-		ArrayList<Jogo> resultado = this.getCarrinho();
-		if( resultado.contains( game)) {
-			resultado.remove( game);
-		}else {
-			//exceção
+		for (int i = 0; i < this.getCarrinho().size(); i++) 
+		{
+			if(game.getId()==this.getCarrinho().get(i).getId())
+			{
+				this.getCarrinho().remove(i);
+			}
 		}
-		this.setCarrinho(resultado);
 	}
 	
 	public void  removeGameConta( Jogo game) {
-		ArrayList<Jogo> resultado = this.getJogosPossuidos();
-		if( resultado.contains( game)) {
-			resultado.remove( game);
-		}else {
-			//exceção
+		for (int i = 0; i < this.jogosPossuidos.size(); i++) 
+		{
+			if(game.getId()==this.jogosPossuidos.get(i).getId())
+			{
+				this.jogosPossuidos.remove(i);
+			}
 		}
-		this.setJogosPossuidos( resultado);
 	}
 
 }

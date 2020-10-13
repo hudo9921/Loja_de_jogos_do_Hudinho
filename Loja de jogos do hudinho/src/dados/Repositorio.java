@@ -6,11 +6,14 @@ import negocio.beans.Usuario;
 import negocio.beans.Jogo;
 import java.time.LocalDate;
 
-public class Repositorio implements IRepositorio{
+public class Repositorio implements ISisConta,ISisJogo,IUserPedido{
 	
 	private ArrayList<Pedido> pedidosFeitos;
 	private ArrayList<Jogo> listaJogos;
 	private ArrayList<Usuario> listaUsuarios;
+	
+	private int idJogo=0;
+	private int idUsers=0;
 	
 	public Repositorio() {
 		this.pedidosFeitos = new ArrayList<>();
@@ -22,19 +25,7 @@ public class Repositorio implements IRepositorio{
 		return pedidosFeitos;
 	}
 	public void setPedidosFeitos(ArrayList<Pedido> pedidosFeitos) {
-		this.pedidosFeitos = pedidosFeitos;
-	}
-	public ArrayList<Jogo> getListaJogos() {
-		return listaJogos;
-	}
-	public void setListaJogos(ArrayList<Jogo> listaJogos) {
-		this.listaJogos = listaJogos;
-	}
-	public ArrayList<Usuario> getListaUsuarios() {
-		return listaUsuarios;
-	}
-	public void setListaUsuarios(ArrayList<Usuario> listaUsuarios) {
-		this.listaUsuarios = listaUsuarios;
+		this.pedidosFeitos.addAll(pedidosFeitos);
 	}
 	
 	public void relatorio(String filtro) {
@@ -45,16 +36,7 @@ public class Repositorio implements IRepositorio{
 		//retornar relatorio de vendas referente a uma data especifica.
 	}
 	
-	public void criarConta( String nome, double id, String senha) {
-		if( nome != null && senha != null) {
-			Usuario user01 = new Usuario( nome, id, senha);
-			this.listaUsuarios.add(user01);
-		}else {
-			//exceção
-		}
-	}
-	
-	public Jogo procurarJogos( String nomeJogo) {
+	/* public Jogo procurarJogos( String nomeJogo) {
 		Jogo jogo = new Jogo( "", 0);
 		if( nomeJogo != null) {
 			ArrayList<Jogo> listaJogos = this.getListaJogos();
@@ -66,25 +48,90 @@ public class Repositorio implements IRepositorio{
 		}else {
 			//exceção
 		}
-		return jogo;
-	}
-	
-	public void addJogo( String nome, float preco) {
-		if( nome != null && preco >= 0) {
-			Jogo jogo = new Jogo( nome, preco);
-			this.listaJogos.add(jogo);
-		}else {
-			//exceção
+		return jogo;  VER COM SAMUEL COMO FUNCIONA E QUEM FAZ
+	}*/
+	//INTERFACE ADMIN JOGO COMECO
+	@Override
+	public void addJogo(String nome,float preco) {
+		if(!(nome.isBlank()&&preco<0))
+		{
+			Jogo j = new Jogo(nome,preco,this.idJogo++);
+			listaJogos.add(j);
 		}
 	}
-	
-	public void rmvJogo( String nome, float preco) {
-		if( nome != null && preco >= 0) {
-			Jogo jogo = new Jogo( nome, preco);
-			this.listaJogos.remove(jogo);
-		}else {
-			//exceção
+
+	@Override
+	public void rmvJogo(int id) {
+		if(listaJogos.size()==1)
+		{
+			if(listaJogos.get(0).getId()==id)
+			{
+				listaJogos.remove(0);
+			}
 		}
+		else
+		for (Jogo j1 : listaJogos)
+		{
+			if(j1.getId()==id)
+			{
+				listaJogos.remove(j1);
+			}
+		}
+		
 	}
+
+	@Override
+	public void modJogo(int id, float newPreco) {
+		for (Jogo j1 : listaJogos)
+		{
+			if(j1.getId()==id&&newPreco>=0.0)
+			{
+				j1.setPreco(newPreco);
+			}
+		}
+		
+	}
+	
+	public ArrayList<Jogo> getListaJogos() 
+	{
+		return listaJogos;
+	}
+	
+	//FINAL INTERFACE ADMIN JOGO
+	
+	
+	//INTERFACE SISTEMA CONTA COMECO
+		/*public void criarConta( String nome, double id, String senha) {
+			if( nome != null && senha != null) {
+				Usuario user01 = new Usuario( nome, id, senha);
+				this.listaUsuarios.add(user01);
+			}else {
+				//exceção
+			}
+		}*/
+		public void criarConta(String username,String senha)
+		{
+			if(!(username.isBlank()&&senha.isBlank()))
+			{
+				Usuario user = new Usuario(username,this.idUsers++,senha, null);
+				listaUsuarios.add(user);
+			}
+			
+		}
+		public ArrayList<Usuario> getListaUsuarios() {
+			return listaUsuarios;
+		}
+		//INTERFACE SISTEMA CONTA FINAL
+		
+		//INTERFACE USUARIO PEDIDO
+		@Override
+		public void addPedido(Usuario comprador, ArrayList<Jogo> carrinho) {
+			ArrayList<Pedido> pedidosFeitos = new ArrayList<>();
+			Pedido newPedido = new Pedido(comprador, carrinho);
+			pedidosFeitos.add(newPedido);
+			this.setPedidosFeitos(pedidosFeitos);
+			
+		}
+		
 		
 }

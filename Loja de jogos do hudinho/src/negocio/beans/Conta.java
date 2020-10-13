@@ -30,7 +30,7 @@ public class Conta {
 	}
 
 	public void setId(double id) {
-		this.id = id;
+		this.id = 4000+id;
 	}
 
 	public String getSenha() {
