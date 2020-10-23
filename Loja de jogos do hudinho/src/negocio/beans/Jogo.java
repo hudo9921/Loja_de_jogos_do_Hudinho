@@ -7,11 +7,13 @@ public class Jogo {
 	private int id;
 	private float preco;
 	private int qntVendido;
-	private int contador;
+	//quando o programa for encerrado o contador ultimo contador precisar ser armazenado.
+	private static int contador;
 	
-	public Jogo( String nome, float preco,int contador) {
+	public Jogo( String nome, float preco) {
 		this.setNome(nome);
 		this.setPreco(preco);
+		contador++;
 		this.id=6000+contador;
 	}
 

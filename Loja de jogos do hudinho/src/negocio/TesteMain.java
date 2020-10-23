@@ -1,7 +1,6 @@
-package negocio.beans;
+package negocio;
 import dados.*;
 import dados.Repositorio;
-import negocio.beans.*;
 import negocio.*;
 
 public class TesteMain {

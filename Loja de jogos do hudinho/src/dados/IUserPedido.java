@@ -1,7 +1,9 @@
 package dados;
 import java.util.ArrayList;
 
-import negocio.beans.*;
+import negocio.*;
+import negocio.beans.Jogo;
+import negocio.beans.Usuario;
 
 public interface IUserPedido {
 	

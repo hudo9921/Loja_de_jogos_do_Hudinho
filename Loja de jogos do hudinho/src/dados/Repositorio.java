@@ -1,9 +1,11 @@
 package dados;
 
 import java.util.ArrayList;
+
+import negocio.beans.Jogo;
 import negocio.beans.Pedido;
 import negocio.beans.Usuario;
-import negocio.beans.Jogo;
+
 import java.time.LocalDate;
 
 public class Repositorio implements ISisConta,ISisJogo,IUserPedido{
@@ -55,7 +57,7 @@ public class Repositorio implements ISisConta,ISisJogo,IUserPedido{
 	public void addJogo(String nome,float preco) {
 		if(!(nome.isBlank()&&preco<0))
 		{
-			Jogo j = new Jogo(nome,preco,this.idJogo++);
+			Jogo j = new Jogo(nome,preco);
 			listaJogos.add(j);
 		}
 	}

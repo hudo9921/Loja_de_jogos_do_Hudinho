@@ -14,8 +14,11 @@ public class Pedido {
 		this.setComprador(comprador);
 		LocalDate dataAtual = LocalDate.now();
 		this.setDataVenda(dataAtual);
-		Jogo[] carrinhoNew = carrinho.toArray(new Jogo[0]);		
-		this.setCarrinho( carrinhoNew);
+		
+		Jogo[] carrinhoNew = new Jogo[carrinho.size()];
+		carrinho.toArray(carrinhoNew);
+		this.setCarrinho(carrinhoNew);
+		
 		float num = 0;
 		for( Jogo c : this.getCarrinho()) {
 			num += c.getPreco();
