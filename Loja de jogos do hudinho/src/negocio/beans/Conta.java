@@ -3,13 +3,15 @@ package negocio.beans;
 public class Conta {
 	
 	private String user;
-	//revisar o atributo id
 	private double id;
 	private String senha;
+	////quando o programa for encerrado o ultimo contador precisar ser armazenado.
+	private static int contador;
 	
 	public Conta( String user, double id, String senha) {
 		this.setUser(user);
-		this.setId(id);
+		contador++;
+		this.setId(contador);
 		this.setSenha(senha);
 	}
 

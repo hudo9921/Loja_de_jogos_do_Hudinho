@@ -9,17 +9,15 @@ import negocio.beans.Usuario;
 import negocio.beans.Admin;
 import negocio.beans.Conta;
 
-public class ControladorVendas implements IAdmSis {
+public class ControladorJogos{
 	
-	private ISisConta repositorioConta;
 	private ISisJogo repositorioJogo;
 	
-	public ControladorVendas(ISisConta contaBanco,ISisJogo repJogo)
+	public ControladorJogos(ISisConta contaBanco,ISisJogo repJogo)
 	{
-		this.repositorioConta=contaBanco;
 		this.repositorioJogo=repJogo;
 	}
-	//SISTEMA E JOGO
+	
 	public void addJogo(String nome, float preco, Conta currentUser) {
 		if( currentUser instanceof Admin) {
 			this.repositorioJogo.addJogo(nome,preco);
@@ -57,18 +55,5 @@ public class ControladorVendas implements IAdmSis {
 		}
 		return lista;
 	}
-	// FIM DE SISTEMA E JOGO	
-	
-	//SISTEMA E CONTA
-	 void criarConta(String username,String senha)
-	{
-		this.repositorioConta.criarConta(username,senha);
-	}
-	
-	 ArrayList<Usuario> getListaUsuarios()
-	{
-		return this.repositorioConta.getListaUsuarios();
-	}
-	 //FIM DE SISTEMA E CONTA
 
 }

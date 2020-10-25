@@ -4,10 +4,10 @@ public class Jogo {
 	
 	private String nome;
 	//revisar id
-	private int id;
+	private double id;
 	private float preco;
 	private int qntVendido;
-	//quando o programa for encerrado o contador ultimo contador precisar ser armazenado.
+	//quando o programa for encerrado o ultimo contador precisar ser armazenado.
 	private static int contador;
 	
 	public Jogo( String nome, float preco) {
@@ -29,7 +29,7 @@ public class Jogo {
 		}
 	}
 
-	public int getId() {
+	public double getId() {
 		return id;
 	}
 

@@ -7,7 +7,7 @@ import negocio.*;
 
 public class Admin extends Conta
 {
-		private int codigoAutenticacao;
+	private int codigoAutenticacao;
 		
 	public Admin(String user, double id, String senha,int codAut) {
 		super(user, id, senha);
