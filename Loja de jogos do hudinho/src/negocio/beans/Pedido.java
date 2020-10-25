@@ -5,32 +5,30 @@ import java.util.ArrayList;
 
 public class Pedido {
 	
-	private Usuario comprador;
+	private Conta comprador;
 	private float valorTotal;
-	private Jogo carrinho[];
+	private Jogo listaJogosPedido[];
 	private LocalDate dataVenda;
 	
-	public Pedido( Usuario comprador, ArrayList<Jogo> carrinho) {
-		this.setComprador(comprador);
-		LocalDate dataAtual = LocalDate.now();
-		this.setDataVenda(dataAtual);
-		
-		Jogo[] carrinhoNew = new Jogo[carrinho.size()];
-		carrinho.toArray(carrinhoNew);
-		this.setCarrinho(carrinhoNew);
-		
-		float num = 0;
-		for( Jogo c : this.getCarrinho()) {
-			num += c.getPreco();
+	public Pedido( Carrinho carrinho) {
+		this.setComprador(carrinho.getProprietario());
+	
+		Jogo[] listaJogos = new Jogo[carrinho.getListaJogos().size()];
+		listaJogos = (Jogo[])carrinho.getListaJogos().toArray();
+		float valor = 0;
+		for( Jogo game : listaJogos) {
+			valor += game.getPreco();
 		}
-		this.setValorTotal( num);
+		this.setValorTotal(valor);
+		this.setListaJogosPedido(listaJogos);
+		this.setDataVenda(carrinho.getDataCompra());
 	}
 
-	public Usuario getComprador() {
+	public Conta getComprador() {
 		return comprador;
 	}
 
-	public void setComprador(Usuario comprador) {
+	public void setComprador(Conta comprador) {
 		this.comprador = comprador;
 	}
 
@@ -42,12 +40,12 @@ public class Pedido {
 		this.valorTotal = valorTotal;
 	}
 
-	public Jogo[] getCarrinho() {
-		return carrinho;
+	public Jogo[] getListaJogosPedido() {
+		return listaJogosPedido;
 	}
 
-	public void setCarrinho(Jogo[] carrinho) {
-		this.carrinho = carrinho;
+	public void setListaJogosPedido(Jogo[] listaJogos) {
+		this.listaJogosPedido = listaJogos;
 	}
 
 	public LocalDate getDataVenda() {
