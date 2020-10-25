@@ -40,5 +40,27 @@ public class Carrinho {
 		this.dataCompra = dataCompra;
 	}
 	
+	public void addCarrinho( Jogo game) {
+		ArrayList<Jogo> resultado = new ArrayList<>();
+		resultado.add( game);
+		this.setListaJogos(resultado);
+	}
+	
+	public void clearCarrinho() {
+		ArrayList<Jogo> resultado = this.getListaJogos();
+		resultado.clear();
+		this.setListaJogos(resultado);
+	}
+	
+	public void  removeGameCarrinho( Jogo game) {
+		for (int i = 0; i < this.getListaJogos().size(); i++) 
+		{
+			if(game.getId()==this.getListaJogos().get(i).getId())
+			{
+				this.getListaJogos().remove(i);
+			}
+		}
+	}
+	
 
 }

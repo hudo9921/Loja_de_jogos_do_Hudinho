@@ -8,7 +8,7 @@ import negocio.beans.Usuario;
 
 import java.time.LocalDate;
 
-public class Repositorio implements ISisConta,ISisJogo,IUserPedido{
+public class Repositorio implements ISisConta,ISisJogo,ISisPedido{
 	
 	private ArrayList<Pedido> pedidosFeitos;
 	private ArrayList<Jogo> listaJogos;

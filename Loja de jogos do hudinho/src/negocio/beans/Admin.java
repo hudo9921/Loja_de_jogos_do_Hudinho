@@ -2,7 +2,6 @@ package negocio.beans;
 
 import java.util.ArrayList;
 
-import dados.IAdmSis;
 import negocio.*;
 
 public class Admin extends Conta

@@ -1,7 +1,6 @@
 package negocio;
 import java.util.ArrayList;
 
-import dados.IAdmSis;
 import dados.ISisConta;
 import dados.ISisJogo;
 import negocio.beans.Jogo;
