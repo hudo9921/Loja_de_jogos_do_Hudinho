@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="478.0" prefWidth="505.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.view.ControladorVerificarUsuarioTela">
+   <children>
+      <Label layoutX="91.0" layoutY="68.0" text="Usuário:">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="nomeUsuario" layoutX="250.0" layoutY="68.0" text="NomeUsuario">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="91.0" layoutY="106.0" text="Senha:">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="senhaUsuario" layoutX="250.0" layoutY="106.0" text="SenhaUsuario">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="150.0" layoutY="23.0" text="Verificar Usuário">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="91.0" layoutY="144.0" text="Jogos:">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="87.0" layoutY="354.0" text="Valor gasto:">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="valor" layoutX="353.0" layoutY="354.0" text="Valor">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Button layoutX="223.0" layoutY="392.0" mnemonicParsing="false" onAction="#okAction" text="Ok">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tableJogo" layoutX="87.0" layoutY="192.0" prefHeight="162.0" prefWidth="331.0">
+        <columns>
+          <TableColumn fx:id="jogoColumn" prefWidth="158.0" text="Jogo" />
+          <TableColumn fx:id="precoColumn" prefWidth="172.0" text="Preço" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

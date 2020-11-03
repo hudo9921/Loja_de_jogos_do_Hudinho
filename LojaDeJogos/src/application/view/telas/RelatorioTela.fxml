@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="462.0" prefWidth="684.0" style="-fx-background-color: #ECE8E7;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.view.ControladorRelatorioTela">
+   <children>
+      <Label layoutX="285.0" layoutY="7.0" text="Relatório">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Separator layoutY="47.0" prefHeight="0.0" prefWidth="684.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0" />
+      <TabPane layoutY="47.0" prefHeight="416.0" prefWidth="684.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
+        <tabs>
+          <Tab text="Usuário">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="usuarioTableView" layoutX="223.0" layoutY="53.0" prefHeight="387.0" prefWidth="684.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="usuarioColumn" prefWidth="331.0" text="Usuário" />
+                            <TableColumn fx:id="valorUsuarioColumn" prefWidth="352.0" sortType="DESCENDING" text="Valor Gasto" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab text="Data">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="dataTableView" prefHeight="387.0" prefWidth="684.0">
+                           <columns>
+                              <TableColumn fx:id="dataColumn" prefWidth="331.0" text="Data" />
+                              <TableColumn fx:id="valorDataColumn" prefWidth="352.0" sortType="DESCENDING" text="Valor arrecadado" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Jogo">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="jogoTableView" prefHeight="387.0" prefWidth="684.0">
+                           <columns>
+                              <TableColumn fx:id="jogoColumn" prefWidth="331.0" text="Jogo" />
+                              <TableColumn fx:id="valorJogoColumn" prefWidth="352.0" sortType="DESCENDING" text="Quantidade vendida" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Button layoutX="628.0" layoutY="12.0" mnemonicParsing="false" onAction="#sairAction" text="Sair" />
+   </children>
+</AnchorPane>

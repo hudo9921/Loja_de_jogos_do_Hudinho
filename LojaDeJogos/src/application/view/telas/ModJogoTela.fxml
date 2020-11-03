@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="230.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ControladorModJogoTela">
+   <children>
+      <TextField fx:id="jogoNameText" layoutX="66.0" layoutY="68.0" prefHeight="25.0" prefWidth="228.0" />
+      <Button layoutX="191.0" layoutY="170.0" mnemonicParsing="false" onAction="#cancelarAction" prefWidth="76.0" text="Cancelar" />
+      <Button layoutX="90.0" layoutY="170.0" mnemonicParsing="false" onAction="#okAction" prefHeight="25.0" prefWidth="76.0" text="Ok" />
+      <Label layoutX="108.0" layoutY="6.0" text="Modificar Jogo">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="jogoPrecoText" layoutX="68.0" layoutY="129.0" prefHeight="25.0" prefWidth="228.0" />
+      <Label layoutX="66.0" layoutY="47.0" text="Nome:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="106.0" text="Preço:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

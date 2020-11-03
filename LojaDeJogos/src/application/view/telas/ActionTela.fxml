@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="230.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ControladorActionTela">
+   <children>
+      <Button layoutX="191.0" layoutY="170.0" mnemonicParsing="false" onAction="#cancelarAction" prefWidth="76.0" text="Cancelar" />
+      <Button layoutX="90.0" layoutY="170.0" mnemonicParsing="false" onAction="#okAction" prefHeight="25.0" prefWidth="76.0" text="Ok" />
+      <Label layoutX="153.0" layoutY="7.0" text="Lucro">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="66.0" layoutY="47.0" text="Data 01:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="75.0" layoutY="115.0" text="Valor:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="data1" layoutX="31.0" layoutY="68.0" onAction="#localDateInicial" prefHeight="25.0" prefWidth="129.0" />
+      <Label layoutX="238.0" layoutY="47.0" text="Data 02:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="data2" layoutX="203.0" layoutY="68.0" onAction="#localDateFinal" prefHeight="25.0" prefWidth="129.0" />
+      <Label fx:id="labelValor" layoutX="145.0" layoutY="115.0" text="LabelValor">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
